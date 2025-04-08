@@ -2,7 +2,8 @@
 
 - [x] Submit project idea to course assignment  
 - [x] Post project idea in the Teams project spreadsheet    
-- [x] Join GitHub organization and create repository  
+- [x] Join GitHub organization and create repository
+- [x] Explore a related existing Python project (e.g., `pgn-tactics-generator`) and evaluate
 - [ ] Create a virtual environment  
 - [ ] Install `python-chess` 
 - [ ] Create basic project structure with folders and files  
