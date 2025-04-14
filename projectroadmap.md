@@ -14,3 +14,10 @@
   - [x] Gives feedback  
 - [x] Add multiple puzzles and randomize them  
 
+### Sprint 2 Tasks
+- [x] Move puzzle loading to a helper function in helpers.py   
+- [x] Allow the user to solve multiple puzzles in a single session  
+- [x] Make small code updates and push them regularly to GitHub  
+- [x] Use clear commit messages for each update  
+- [ ] Set up a basic visual chessboard using python-chess and console rendering  
+- [ ] Let the user input a move and see the move played on the board
