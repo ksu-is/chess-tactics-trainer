@@ -6,12 +6,6 @@ A beginner-friendly Python app that helps users practice **mate-in-one chess puz
 
 ---
 
-# Chess Tactics Trainer
-
-A beginner-friendly Python app that helps users practice **mate-in-one chess puzzles**. The program shows a position and asks you to find the best move. You’ll get instant feedback and can keep practicing with random puzzles.
-
----
-
 ## What it does
 
 - Loads random mate-in-one puzzles
