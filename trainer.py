@@ -15,7 +15,9 @@ while True:
 
     # Show the board
     print("\nHere's your puzzle:\n")
-    print(board)
+    print(board.unicode(borders=True))
+
+
 
     # Ask for move
     user_input = input("\nEnter your move (e.g., f1c4): ").strip().lower()
