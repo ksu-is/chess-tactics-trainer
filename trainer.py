@@ -2,48 +2,43 @@ import random
 import chess
 from utils.helpers import load_puzzles
 
-# Load all puzzles once at the start
+# Load all puzzles written in SAN format
 puzzles = load_puzzles()
 
-print("\n🎯 Welcome to the Mate-in-One Trainer!")
+print("\n🎯 Welcome to the Mate-in-One Trainer (Algebraic Notation Edition)")
 
 while True:
-    # ✅ Randomly select a new puzzle every time through the loop
+    # Pick a new random puzzle every round
     puzzle = random.choice(puzzles)
     board = chess.Board(puzzle["fen"])
-    correct_move = puzzle["move"]
+    correct_move_san = puzzle["move"]
 
-    # Display the puzzle board
+    # Show the puzzle
     print("\nHere's your puzzle:\n")
     print(board.unicode(borders=True))
 
-    # Get the user's move
-    user_input = input("\nEnter your move (e.g., f1c4): ").strip().lower()
+    # Ask for user's move in SAN (algebraic) format
+    user_input = input("\nEnter your move (e.g., Qf6, g3, Re8): ").strip()
 
     try:
-        # Convert input to a move object
-        move = chess.Move.from_uci(user_input)
+        # Convert SAN input to a move object
+        move = board.parse_san(user_input)
+        board.push(move)
 
-        if move in board.legal_moves:
-            # Apply the move
-            board.push(move)
+        # Show updated board after move
+        print("\n📥 You played:\n")
+        print(board.unicode(borders=True))
 
-            # Show the updated board
-            print("\n📥 You played:\n")
-            print(board.unicode(borders=True))
-
-            # Check if it's correct
-            if user_input == correct_move:
-                print("\n✅ Correct move!")
-            else:
-                print(f"\n❌ Incorrect. The correct move was: {correct_move}")
+        # Compare move to correct solution
+        if user_input == correct_move_san:
+            print("\n✅ Correct move!")
         else:
-            print("\n⚠️ That move is not legal in this position.")
+            print(f"\n❌ Incorrect. The correct move was: {correct_move_san}")
     except:
-        print("\n⚠️ Invalid move format. Please enter something like 'f1c4'")
+        print("\n⚠️ Invalid move. Please try a format like 'Qf6', 'g3', or 'O-O'.")
 
-    # Ask if the user wants another puzzle
-    again = input("\nWant to try another? (y/n): ").strip().lower()
+    # Ask if user wants to continue
+    again = input("\nTry another puzzle? (y/n): ").strip().lower()
     if again != "y":
         print("\n👋 Thanks for training. Goodbye!")
         break
