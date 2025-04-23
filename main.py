@@ -1,29 +1,31 @@
 import pygame
 import sys
 
+# Constants
+SQUARE_SIZE = 80
+BOARD_SIZE = SQUARE_SIZE * 8
+LIGHT = (240, 217, 181)
+DARK = (181, 136, 99)
+
+def draw_board(window):
+    for row in range(8):
+        for col in range(8):
+            color = LIGHT if (row + col) % 2 == 0 else DARK
+            rect = pygame.Rect(col * SQUARE_SIZE, row * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE)
+            pygame.draw.rect(window, color, rect)
+
 def main():
-    # Initialize pygame
     pygame.init()
-
-    # Set window size
-    WIDTH, HEIGHT = 640, 640
-    WINDOW = pygame.display.set_mode((WIDTH, HEIGHT))
-
-    # Set window title
+    window = pygame.display.set_mode((BOARD_SIZE, BOARD_SIZE))
     pygame.display.set_caption("Chess Tactics Trainer")
 
-    # Set background color
-    WHITE = (255, 255, 255)
-
-    # Run the game loop
     running = True
     while running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
 
-        # Fill screen with white
-        WINDOW.fill(WHITE)
+        draw_board(window)
         pygame.display.flip()
 
     pygame.quit()
