@@ -2,13 +2,13 @@ import random
 import chess
 from utils.helpers import load_puzzles
 
-# Load all puzzles written in SAN format
+# load all puzzles written in SAN format
 puzzles = load_puzzles()
 
-print("\n🎯 Welcome to the Mate-in-One Trainer (Algebraic Notation Edition)")
+print("\n🎯 Welcome to the Mate-in-One Trainer")
 
 while True:
-    # Pick a new random puzzle every round
+    # pick a new random puzzle every round
     puzzle = random.choice(puzzles)
     board = chess.Board(puzzle["fen"])
     correct_move_san = puzzle["move"]
